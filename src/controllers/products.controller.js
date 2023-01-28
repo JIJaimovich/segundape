@@ -16,9 +16,27 @@ export async function getProduct(req, res) {
         });
     }
 }
+// export async function getProducts(req, res) {
+//     try {
+//         const response = await ProductService.getProducts();
+//         res.json({
+//             products: response,
+//             status: STATUS.SUCCESS,
+//         });
+//     } catch (error) {
+//         res.status(400).json({
+//             error: error.message,
+//             status: STATUS.FAIL,
+//         });
+//     }
+// }
 export async function getProducts(req, res) {
     try {
-        const response = await ProductService.getProducts();
+        const { page, limit, category, status, price} = req.query;
+        
+        
+        const response = await ProductService.getProducts({ page, limit, category, status, price});
+        
         res.json({
             products: response,
             status: STATUS.SUCCESS,
@@ -51,28 +69,40 @@ export async function updateProduct(req, res) {
         const { body } = req;
         const response = await ProductService.updateProduct(pid, body);
         res.status(201).json({
-          cart: response,
-          status: STATUS.SUCCESS,
+            cart: response,
+            status: STATUS.SUCCESS,
         });
-      } catch (error) {
+    } catch (error) {
         res.status(400).json({
-          error: error.message,
-          status: STATUS.FAIL,
+            error: error.message,
+            status: STATUS.FAIL,
         });
-      }
+    }
 }
 export async function deleteProduct(req, res) {
     try {
         const { pid } = req.params;
         await ProductService.deleteProduct(pid);
         res.status(201).json({
-          message: "Product deleted",
-          status: STATUS.SUCCESS,
+            message: "Product deleted",
+            status: STATUS.SUCCESS,
         });
-      } catch (error) {
+    } catch (error) {
         res.status(400).json({
-          error: error.message,
-          status: STATUS.FAIL,
+            error: error.message,
+            status: STATUS.FAIL,
         });
-      }
- }
+    }
+}
+
+
+export async function showProducts(req, res) {
+    try {
+        res.render({});
+    } catch (error) {
+        res.status(400).json({
+            error: error.message,
+            status: STATUS.FAIL,
+        });
+    }
+}

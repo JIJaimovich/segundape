@@ -20,7 +20,7 @@ export async function createCart(req,res){
         const { body } = req;
         const response = await CartService.createCart(body);
         res.status(201).json({
-            product: response,
+            cart: response,
             status: STATUS.SUCCESS,
         });
     } catch (error) {
@@ -48,7 +48,8 @@ export async function getCart(req, res){
 export async function addProductToCart(req,res){
     try {
         const { cid } = req.params;
-        const response = await CartService.addProductToCart(cid);
+        const { pid } = req.params;
+        const response = await CartService.addProductToCart(cid, pid);
         res.json({
             cart: response,
             status: STATUS.SUCCESS,

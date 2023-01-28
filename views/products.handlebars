@@ -1,0 +1,31 @@
+<h1>Products</h1>
+{{#each docs}}
+<div>
+  <li>
+    <ul>ID: {{this._id}} </ul>
+    <ul>Title: {{this.title}} </ul>
+    <ul>Description {{this.description}} </ul>
+    <ul>Code: {{this.code}} </ul>
+    <ul>Price: {{this.price}} </ul>
+    <ul>Status: {{this.status}} </ul>
+    <ul>Stock: {{this.stock}} </ul>
+    <ul>Category: {{this.category}} </ul>
+    <ul>Thumbnail: {{this.thumbnail}} </ul>
+  </li>
+</div>
+<div>
+  <button id={{this._id}} onclick="">Add to cart</button>
+</div>
+{{/each}}
+
+{{#if prevPage}}
+<a href="/products?page={{prevPage}}">Previous</a>
+{{/if}}
+{{page}}
+{{#if nextPage}}
+<a href="/products?page={{nextPage}}">Next</a>
+{{/if}}
+
+<script>
+  function otraPrueba() {console.log('bueno')}
+</script>
