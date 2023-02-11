@@ -1,18 +1,20 @@
 import * as UserService from "../services/users.service.js";
+import bcrypt from "bcrypt";
 
 export async function login(email, password) {
-    try {
-      const user = await UserService.getUser(email);
-      if (!user) {
-        throw new Error("User already exists");
+  try {
+    const user = await UserService.getUser(email);
+    if (!user) {
+      throw new Error("User not found");
+    } else {
+      const isValid = bcrypt.compareSync(password,user.password)
+      if (isValid) {
+        return true;
       } else {
-        if (password === user.password) {
-          return true;
-        } else {
-          return false;
-        }
+        return false;
       }
-    } catch (error) {
-      throw new Error(error.message);
     }
+  } catch (error) {
+    throw new Error(error.message);
   }
+};

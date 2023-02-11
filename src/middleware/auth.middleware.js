@@ -3,6 +3,6 @@ export function auth(req, res, next) {
       req.session.touch();
       next();
     } else {
-      res.status(400).send("User not found.");
+      res.status(403).send("User not found.");
     }
   }

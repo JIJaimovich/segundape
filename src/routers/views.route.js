@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { ProductModel } from "../dao/models/products.models.js";
 import { CartModel } from "../dao/models/carts.models.js";
+import * as UserController from "../controllers/users.controller.js";
 const router = Router();
 
 
@@ -27,4 +28,7 @@ router.get("/carts/:cid", async (req, res) => {
     console.log(cart._id);
 })
 
+// router.get("/signup", UserController.renderSignUp);
+// router.get("/signin", UserController.renderSignIn);
+// router.post("signup", UserController.signUp); 
 export default router;

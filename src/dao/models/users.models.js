@@ -2,7 +2,11 @@ import { Schema, model } from "mongoose";
 
 const schema = new Schema(
     {
-        name: {
+        first_name: {
+            type: String,
+            required: true,
+        },
+        last_name: {
             type: String,
             required: true,
         },
@@ -11,15 +15,22 @@ const schema = new Schema(
             required: true,
             unique: true,
         },
+        age:{
+            type: Number,
+            min: 0,
+            required: true,
+        },
         password: {
             type: String,
             required: true,
             minLength: 6,
-            maxLength: 10,
         },
-        admin: {
-            type: Boolean,
-            default: false,
+        cart:{
+            type: String,
+        },
+        role: {
+            type: String,
+            default: "User",
         },
     },
     {

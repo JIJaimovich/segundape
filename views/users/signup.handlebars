@@ -6,9 +6,15 @@
                 Account Register
             </card-header>
             <div class="card-body">
-                <form action="users/signup" method="POST">
+                <form action="signup" method="POST">
                     <div class="form-group">
-                        <input type="text" name="name" class="form-control" placeholder="Name">
+                        <input type="text" name="first_name" class="form-control" placeholder="First name">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="last_name" class="form-control" placeholder="Last name">
+                    </div>
+                    <div class="form-group">
+                        <input type="number" name="age" class="form-control" placeholder="Age">
                     </div>
                     <div class="form-group">
                         <input type="email" name="email" class="form-control" placeholder="Email">
@@ -21,6 +27,14 @@
                     </button>
                 </form>
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4 mx-auto">
+        <div class="card">
+           <a href="http://localhost:3000/api/github/login">Sign up with Github</a>     
         </div>
     </div>
 </div>
