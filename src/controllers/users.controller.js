@@ -45,11 +45,12 @@ export async function updatePassword(req, res) {
   }
 }
 
-export const renderSignUp =   async (req, res) => {
-    res.render('users/signup');
-};
+
 export const renderSignIn = async (req, res) => {
   res.render('users/signin');
+};
+export const renderSignUp =   async (req, res) => {
+  res.render('users/signup');
 };
 export const signIn = async (req, res) => {
     req.session.logged = true;
@@ -73,17 +74,3 @@ export const logOut = async (req, res) => {
     res.status(400).send(error.message);
   }
 };
-// export const logOut = async (req, res) => {
-//   try {
-//     req.session.destroy(err => {
-//       if (err) {
-//         res.render(`../views/errors/base`, { error: "No se puedo logear, usuario y/o password incorrecta." })
-//         return
-//       } res.redirect(`http://localhost:5000/login?logout_status=success`)
-//       return
-//     })
-//   } catch (error) {
-//     res.render(`/errors/base`, { error: "Hubo un problema! Lo estamos solucionando." })
-//     return
-//   }
-// }
